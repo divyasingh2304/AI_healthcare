@@ -1,0 +1,71 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+        <h2>Welcome Admin: {{ session['admin'] }}</h2>
+        <a href="{{ url_for('admin_logout') }}" class="logout-btn">Logout</a>
+    </div>
+    <div class="notification-box">
+
+    <div class="notify-card">
+        🔔 New appointments today: {{ today_count }}
+    </div>
+
+    <div class="notify-card">
+        ⏳ Pending approvals: {{ pending }}
+    </div>
+</div>
+
+</div>
+
+    <br>
+
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Specialization</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.patient_name }}</td>
+                <td>{{ row.doctor_name }}</td>
+                <td>{{ row.specialization }}</td>
+
+                <td>
+                    {% if row.status == "Approved" %}
+                        <span class="status-approved">Approved</span>
+                    {% elif row.status == "Rejected" %}
+                        <span class="status-rejected">Rejected</span>
+                    {% else %}
+                        <span class="status-pending">Pending</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if row.status == "Pending" %}
+                        <a href="/approve/{{ row.id }}" class="approve-btn">Approve</a>
+                        <a href="/reject/{{ row.id }}" class="reject-btn">Reject</a>
+                    {% else %}
+                        ---
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

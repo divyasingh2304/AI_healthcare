@@ -1,0 +1,52 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+
+<h2>Analytics Dashboard</h2>
+
+<div class="analytics-cards">
+
+    <div class="card blue">
+        <h3>Total Appointments</h3>
+        <p>{{ total }}</p>
+    </div>
+
+    <div class="card green">
+        <h3>Approved</h3>
+        <p>{{ approved }}</p>
+    </div>
+
+    <div class="card orange">
+        <h3>Pending</h3>
+        <p>{{ pending }}</p>
+    </div>
+
+    <div class="card red">
+        <h3>Rejected</h3>
+        <p>{{ rejected }}</p>
+    </div>
+
+</div>
+
+<br><br>
+
+<canvas id="statusChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('statusChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Approved', 'Pending', 'Rejected'],
+        datasets: [{
+            label: 'Appointments',
+            data: [{{ approved }}, {{ pending }}, {{ rejected }}],
+            backgroundColor: ['#28a745','#ffc107','#dc3545']
+        }]
+    }
+});
+</script>
+
+{% endblock %}

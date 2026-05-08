@@ -1,0 +1,50 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+
+<h2>Doctor Management</h2>
+
+<!-- Add Doctor Form -->
+<div class="form-card">
+    <h3>Add Doctor</h3>
+
+    <form method="POST" action="/add_doctor">
+        <input type="text" name="name" placeholder="Doctor Name" required>
+        <input type="text" name="specialization" placeholder="Specialization" required>
+        <input type="number" name="fees" placeholder="Consultation Fees" required>
+        <input type="time" name="available_from" required>
+        <input type="time" name="available_to" required>
+
+        <button type="submit" class="approve-btn">Add Doctor</button>
+    </form>
+</div>
+
+<br>
+
+<!-- Doctor List -->
+<h3>All Doctors</h3>
+
+<table class="dashboard-table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Fees</th>
+        <th>Available Time</th>
+        <th>Action</th>
+    </tr>
+
+    {% for doctor in doctors %}
+    <tr>
+        <td>{{ doctor.id }}</td>
+        <td>{{ doctor.name }}</td>
+        <td>{{ doctor.specialization }}</td>
+        <td>₹ {{ doctor.fees }}</td>
+        <td>{{ doctor.available_from }} - {{ doctor.available_to }}</td>
+        <td>
+            <a href="/delete_doctor/{{ doctor.id }}" class="reject-btn">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

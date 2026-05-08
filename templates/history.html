@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Appointments</title>
+    <link rel="stylesheet" href="/static/history.css">
+</head>
+<body>
+
+<div class="card">
+    <h2>Your Appointments</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Specialization</th>
+                    <th>Fees</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Meeting</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.patient_name }}</td>
+                    <td>{{ row.doctor_name }}</td>
+                    <td>{{ row.specialization }}</td>
+                    <td>₹{{ row.doctor_fees }}</td>
+                    <td>{{ row.appointment_date }}</td>
+                    <td>{{ row.appointment_time }}</td>
+
+                    <td>
+                        {% if row.status == "Pending" %}
+                            <span class="pending">Pending</span>
+                        {% elif row.status == "Approved" %}
+                            <span class="approved">Approved</span>
+                        {% elif row.status == "Cancelled" %}
+                            <span class="cancelled">Cancelled</span>
+                        {% else %}
+                            <span class="pending">{{ row.status }}</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if row.status == "Approved" %}
+                            <a href="{{ row.meet_link }}" target="_blank" class="meet-btn">
+                                Join Meet
+                            </a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if row.status == "Pending" %}
+                            <a href="/cancel/{{row.id}}" class="cancel-btn">
+                                Cancel Appointment
+                            </a>
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/dashboard" class="back-btn">Back to Dashboard</a>
+</div>
+
+</body>
+</html>

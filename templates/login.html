@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ role|capitalize }} Login</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>{{ role|capitalize }} Login</h2>
+
+    <form method="POST">
+        <input type="hidden" name="role" value="{{ role }}">
+
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>
+        Don't have an account?
+        <a href="/register?role={{ role }}">Register</a>
+    </p>
+
+    <a href="/" class="back-btn">⬅ Back to Home</a>
+</div>
+
+</body>
+</html>

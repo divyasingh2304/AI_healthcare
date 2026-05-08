@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4e73df,#1cc88a);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    width:90%;
+    max-width:1000px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.card h2{
+    margin-bottom:25px;
+    color:#4e73df;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#4e73df;
+    color:white;
+}
+
+th, td{
+    padding:12px;
+    text-align:center;
+}
+
+tbody tr{
+    border-bottom:1px solid #ddd;
+    transition:0.3s;
+}
+
+tbody tr:hover{
+    background:#f2f2f2;
+}
+
+.pending{
+    background:#f6c23e;
+    padding:6px 12px;
+    border-radius:20px;
+    color:white;
+    font-size:14px;
+}
+
+.approved{
+    background:#1cc88a;
+    padding:6px 12px;
+    border-radius:20px;
+    color:white;
+    font-size:14px;
+}
+
+.meet-btn{
+    background:#4e73df;
+    color:white;
+    padding:6px 14px;
+    border-radius:20px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.meet-btn:hover{
+    background:#2e59d9;
+}
+
+
+.approve-btn:hover{
+    background:#17a673;
+}

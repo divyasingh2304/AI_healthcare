@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/static/history.css">
+</head>
+<body>
+
+<div class="card">
+    <h2>Admin - Manage Appointments</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[7] }}</td>
+
+                <td>
+                    {% if row[7] == "Pending" %}
+                        <a href="/approve/{{ row[0] }}" class="approve-btn">
+                            Approve
+                        </a>
+                    {% else %}
+                        Approved
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/dashboard" class="back-btn">Back</a>
+</div>
+
+</body>
+</html>

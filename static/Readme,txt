@@ -1,0 +1,13 @@
+RUN PROJECT FOLLOWING THIS STEPS:-
+python --version
+cd your_project_folder
+python -m venv venv
+venv\Scripts\activate
+install this libraries :-
+pip install flask
+pip install mysql-connector-python
+pip install werkzeug
+pip install twilio
+check my sql
+USE healthcare;
+SHOW TABLES;

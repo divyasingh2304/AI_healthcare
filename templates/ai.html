@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Disease Prediction</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>AI Disease Prediction</h2>
+
+<form method="POST">
+
+<input type="number" name="fever" placeholder="Fever (1/0)" required>
+
+<input type="number" name="cough" placeholder="Cough (1/0)" required>
+
+<input type="number" name="headache" placeholder="Headache (1/0)" required>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if prediction %}
+<h3 class="result">Prediction: {{ prediction }}</h3>
+{% endif %}
+
+<p class="back">
+<a href="/dashboard">Back to Dashboard</a>
+</p>
+
+<h3>Health Precaution Chatbot</h3>
+
+<div id="chatbox">
+
+<div id="messages"></div>
+
+<input type="text" id="userInput" placeholder="Ask about symptoms...">
+
+<button onclick="sendMessage()">Send</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function sendMessage(){
+
+let input=document.getElementById("userInput").value
+
+let messages=document.getElementById("messages")
+
+messages.innerHTML += "<p><b>You:</b> "+input+"</p>"
+
+fetch("/chatbot",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({message:input})
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+messages.innerHTML += "<p><b>Bot:</b> "+data.reply+"</p>"
+
+})
+
+document.getElementById("userInput").value=""
+
+}
+
+</script>
+
+</body>
+</html>

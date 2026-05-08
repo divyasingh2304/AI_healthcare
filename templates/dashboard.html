@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+
+<div class="sidebar">
+
+<h2>HealthCare+</h2>
+
+<a href="/dashboard">Dashboard</a>
+
+<a href="/book">Book Appointment</a>
+
+<a href="/history">View History</a>
+
+<a href="/emergency">Emergency Services</a>
+
+<a href="/ai">AI Prediction</a>
+
+<a href="/about">About</a>
+
+<a href="/contact">Contact</a>
+
+<a href="/logout" class="logout">Logout</a>
+
+</div>
+
+<div class="main">
+    <h1>Welcome, {{ user }}</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Book Appointment</h3>
+            <p>Schedule your doctor visit easily.</p>
+            <a href="/book">Go</a>
+        </div>
+
+        <div class="card">
+            <h3>View History</h3>
+            <p>Check your past appointments.</p>
+            <a href="/history">Go</a>
+        </div>
+
+        <div class="card">
+            <h3>AI Prediction</h3>
+            <p>Predict diseases using AI system.</p>
+            <a href="/ai">Go</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

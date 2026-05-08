@@ -1,0 +1,45 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+        <h2>Contact Messages</h2>
+    </div>
+
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Reply</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for msg in messages %}
+            <tr>
+                <td>{{ msg.name }}</td>
+                <td>{{ msg.email }}</td>
+                <td>{{ msg.message }}</td>
+
+                <td>
+                    <form method="POST" action="/reply/{{ msg.id }}">
+                        <input type="text" name="reply" placeholder="Type reply">
+                        <button type="submit">Send</button>
+                    </form>
+
+                    {% if msg.reply %}
+                        <p><b>Sent:</b> {{ msg.reply }}</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

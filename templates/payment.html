@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+
+<div class="booking-wrapper">
+
+    <div class="booking-card">
+
+        <h2>💳 Payment</h2>
+
+        <!-- Appointment Details -->
+        <h3>Appointment Details</h3>
+        <p><b>Patient:</b> {{ booking.patient }}</p>
+        <p><b>Doctor:</b> {{ booking.doctor }}</p>
+        <p><b>Date:</b> {{ booking.date }}</p>
+        <p><b>Time:</b> {{ booking.time }}</p>
+        <p><b>Fees:</b> ₹{{ booking.fees }}</p>
+
+        <!-- Payment Options -->
+        <h3>Select Payment Method</h3>
+
+        <div class="payment-option">
+            <input type="radio" name="payment_method" value="razorpay" checked>
+            Pay Online (Razorpay)
+        </div>
+
+        <div class="payment-option">
+            <input type="radio" name="payment_method" value="cash">
+            Cash at Hospital
+        </div>
+
+        <!-- BUTTON -->
+        <button id="pay-btn" class="confirm-btn">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+
+const payBtn = document.getElementById("pay-btn");
+
+// Razorpay config
+var options = {
+    "key": "{{ key }}",
+    "amount": "{{ order.amount }}",
+    "currency": "INR",
+    "name": "Healthcare App",
+    "description": "Doctor Appointment",
+    "order_id": "{{ order.id }}",
+
+    "handler": function (response){
+        window.location.href = "/payment-success";
+    },
+
+    "theme": {
+        "color": "#00acc1"
+    }
+};
+
+var rzp = new Razorpay(options);
+
+payBtn.onclick = function(e){
+
+    const selected = document.querySelector("input[name='payment_method']:checked").value;
+
+    if(selected === "cash"){
+        // skip payment → directly success
+        window.location.href = "/payment-success";
+    } 
+    else {
+        // open razorpay
+        rzp.open();
+    }
+
+    e.preventDefault();
+};
+
+</script>
+
+</body>
+</html>

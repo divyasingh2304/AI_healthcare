@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    color: #fff;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(255,255,255,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.btn {
+    background: white;
+    color: #1cc88a !important;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.admin-btn {
+    background: #222;
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 25px;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.role-buttons {
+    margin-top: 20px;
+}
+
+.btn-large {
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px;
+    display: inline-block;
+}
+
+.btn-user {
+    background: white;
+    color: #1cc88a;
+}
+
+.btn-admin-large {
+    background: #222;
+    color: white;
+}
+
+/* FEATURES */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+}
+
+.card {
+    background: white;
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #1cc88a;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+}
+.role-section {
+    margin-top: 30px;
+}
+
+.role-btn {
+    display: inline-block;
+    padding: 14px 35px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 10px;
+    transition: 0.3s ease;
+}
+
+.user-role {
+    background: white;
+    color: #1cc88a;
+}
+
+.user-role:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.admin-role {
+    background: #222;
+    color: white;
+}
+
+.admin-role:hover {
+    background: #000;
+    transform: translateY(-2px);
+}
+.back-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: white;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: rgba(0,0,0,0.6);
+}
+/* Center full screen */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+}
+
+/* Card Box */
+.login-card {
+    background: rgba(255,255,255,0.9);
+    padding: 40px;
+    width: 350px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Heading */
+.login-card h2 {
+    margin-bottom: 25px;
+    color: #4e73df;
+}
+
+/* Input fields */
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(90deg, #4e73df, #1cc88a);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    opacity: 0.9;
+}
+
+/* Links */
+.extra-links {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.extra-links a {
+    text-decoration: none;
+    color: #4e73df;
+    font-weight: 500;
+}
+
+.back-home-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 15px;
+    border-radius: 20px;
+    background: #444;
+    color: white !important;
+}
+
+.back-home-btn:hover {
+    background: #000;
+}
+.password-box {
+    position: relative;
+}
+
+.password-box span {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+}
+
+#error-msg {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#strength-text {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background: rgba(0,0,0,0.2);
+}
+
+.logo {
+    font-size:22px;
+    font-weight:bold;
+    color:white;
+}
+
+.nav-links a {
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+}
+
+.primary-btn {
+    background:white;
+    color:#4e73df;
+    padding:8px 15px;
+    border-radius:20px;
+}
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid white;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: white;
+    color: #4e73df;
+}
+
+.admin-btn {
+    background: black;
+    border: none;
+}

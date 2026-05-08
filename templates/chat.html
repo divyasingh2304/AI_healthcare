@@ -1,0 +1,12 @@
+<h2>Chat with {{ doctor }}</h2>
+
+<div class="chat-box">
+    {% for msg in messages %}
+        <p><strong>{{ msg.sender }}:</strong> {{ msg.message }}</p>
+    {% endfor %}
+</div>
+
+<form method="POST">
+    <input type="text" name="message" placeholder="Type message..." required>
+    <button type="submit">Send</button>
+</form>

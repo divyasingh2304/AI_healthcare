@@ -1,0 +1,278 @@
+/* Background */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #4e73df, #1cc88a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Card */
+.container {
+    background: #ffffff;
+    padding: 40px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Heading */
+.container h2 {
+    margin-bottom: 25px;
+    color: #4e73df;
+}
+
+/* Input Fields */
+.container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.container input:focus {
+    border-color: #4e73df;
+    outline: none;
+    box-shadow: 0 0 5px rgba(78, 115, 223, 0.5);
+}
+
+/* Button */
+.container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #4e73df, #1cc88a);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container button:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+/* Links */
+.container a {
+    text-decoration: none;
+    color: #4e73df;
+    font-size: 14px;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+/* Extra spacing */
+.links {
+    margin-top: 15px;
+}
+/* ================= ADMIN DASHBOARD STYLE ================= */
+
+.dashboard-container {
+    width: 90%;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+/* Logout Button */
+.logout-btn {
+    padding: 8px 15px;
+    background: #e74a3b;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+/* Table Styling */
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard-table thead {
+    background: #4e73df;
+    color: white;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.dashboard-table tr:nth-child(even) {
+    background: #f8f9fc;
+}
+
+.dashboard-table tr:hover {
+    background: #e2e6ea;
+}
+
+/* Status Colors */
+.status-approved {
+    color: green;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+/* Approve Button */
+.approve-btn {
+    padding: 6px 12px;
+    background: #1cc88a;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.approve-btn:hover {
+    background: #17a673;
+}
+.reject-btn {
+    padding: 6px 12px;
+    background: #e74a3b;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.reject-btn:hover {
+    background: #c0392b;
+} 
+.status-rejected {
+    color: red;
+    font-weight: bold;
+}
+.card {
+    flex: 1;
+    min-width: 150px;
+    padding: 20px;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+/* Admin Layout */
+.admin-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #2c3e50;
+    padding: 20px;
+    color: white;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background: #1cc88a;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: #f8f9fc;
+}
+.form-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.form-card input {
+    padding: 8px;
+    margin: 5px;
+}
+.analytics-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.blue { background:#4e73df; }
+.green { background:#28a745; }
+.orange { background:#ffc107; color:black; }
+.red { background:#dc3545; }
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-btn {
+    text-decoration: none;
+    background: #e74a3b;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}

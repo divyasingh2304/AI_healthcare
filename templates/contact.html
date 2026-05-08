@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - HealthCare+</title>
+    <link rel="stylesheet" href="/static/about.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <i class="fa-solid fa-phone"></i> Contact HealthCare+ Anytime
+</div>
+
+<div class="container">
+
+    <h1><i class="fa-solid fa-address-book"></i> Contact Us</h1>
+
+    <div class="contact-boxes">
+
+        <div class="box">
+            <i class="fa-solid fa-envelope"></i>
+            <h3>Email</h3>
+            <p>mca_reg202527177@timscdrmumbai.in</p>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-phone"></i>
+            <h3>Phone</h3>
+            <p>+91 9876543210</p>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-location-dot"></i>
+            <h3>Location</h3>
+            <p>Healthcare+ Medical Center, MG Road, Pune, Maharashtra</p>
+        </div>
+
+    </div>
+
+    <div class="form-section">
+        <h2>Send Message</h2>
+
+        <form method="POST">
+
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <input type="email" name="email" placeholder="Your Email" required>
+
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+            <button type="submit">Send</button>
+
+        </form>
+        {% for msg in messages %}
+<div>
+    <p><b>Your Message:</b> {{ msg.message }}</p>
+    <p><b>Admin Reply:</b> {{ msg.reply }}</p>
+</div>
+{% endfor %}
+    </div>
+
+    <div class="map">
+        <iframe
+            src="https://www.google.com/maps?q=MG+Road+Pune+Maharashtra&output=embed"
+            width="100%"
+            height="300"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <a href="/dashboard">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+
+<div class="booking-wrapper">
+
+    <div class="booking-card">
+
+        <h2>🏥 Book Appointment</h2>
+
+        {% if error %}
+            <p style="color:red; text-align:center;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+
+            <div class="form-group">
+                <label>Patient Name</label>
+                <input type="text" name="patient_name" value="{{ session['user'] }}">
+            </div>
+
+            <div class="form-group">
+                <label>Select Doctor</label>
+                <select name="doctor" id="doctor" required>
+                    <option value="">Choose Doctor</option>
+
+                    {% for doc in doctors %}
+                    <option value="{{ doc.id }}"
+                            data-spec="{{ doc.specialization }}"
+                            data-fees="{{ doc.fees }}"
+                            data-from="{{ doc.available_from }}"
+                            data-to="{{ doc.available_to }}">
+                        {{ doc.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="info-grid">
+                <div class="form-group">
+                    <label>Specialization</label>
+                    <input type="text" id="specialization" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Doctor Fees</label>
+                    <input type="text" id="fees" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Available Timing</label>
+                <input type="text" id="timing" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Select Date</label>
+                <input type="date" name="date" id="date" min="{{ today }}" required>
+            </div>
+
+            <!-- SLOT SECTION -->
+            <div class="form-group">
+                <label>Select Slot</label>
+                <div id="slots-container" class="slots-grid"></div>
+                <input type="hidden" name="time" id="selected-time">
+            </div>
+
+            <button type="submit" class="confirm-btn">
+                Confirm Booking
+            </button>
+
+        </form>
+
+        <a href="/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+
+    </div>
+
+</div>
+
+<script>
+
+const doctorSelect = document.getElementById("doctor");
+const dateInput = document.getElementById("date");
+const specInput = document.getElementById("specialization");
+const feesInput = document.getElementById("fees");
+const timingInput = document.getElementById("timing");
+const slotsContainer = document.getElementById("slots-container");
+const selectedTimeInput = document.getElementById("selected-time");
+
+let bookedSlots = [];
+
+// 🔥 GENERATE SLOTS (ALWAYS WORKS)
+function generateSlots(from, to){
+
+    slotsContainer.innerHTML = "";
+
+    if(!from || !to) return;
+
+    console.log("Generating slots:", from, to);
+
+    let start = parseInt(from.substring(0,2)); // FIXED
+    let end = parseInt(to.substring(0,2));     // FIXED
+
+    for(let i = start; i < end; i++){
+
+        let time = (i < 10 ? "0" + i : i) + ":00";
+
+        let slot = document.createElement("div");
+        slot.classList.add("slot");
+        slot.innerText = time;
+
+        if(bookedSlots.includes(time)){
+            slot.classList.add("booked");
+        } 
+        else {
+            slot.addEventListener("click", function(){
+
+                document.querySelectorAll(".slot")
+                    .forEach(s => s.classList.remove("selected"));
+
+                slot.classList.add("selected");
+                selectedTimeInput.value = time;
+            });
+        }
+
+        slotsContainer.appendChild(slot);
+    }
+}
+
+// 🔥 FETCH FROM DB
+function fetchSlots(doctorId, date){
+
+    if(!doctorId || !date) return;
+
+    fetch(`/get-slots?doctor=${doctorId}&date=${date}`)
+    .then(res => res.json())
+    .then(data => {
+
+        console.log("Booked slots:", data);
+
+        bookedSlots = data;
+
+        const selected = doctorSelect.options[doctorSelect.selectedIndex];
+        const from = selected.getAttribute("data-from");
+        const to = selected.getAttribute("data-to");
+
+        generateSlots(from, to);
+    });
+}
+
+// 🔥 DOCTOR CHANGE
+doctorSelect.addEventListener("change", function(){
+
+    const selected = this.options[this.selectedIndex];
+
+    const from = selected.getAttribute("data-from");
+    const to = selected.getAttribute("data-to");
+
+    specInput.value = selected.getAttribute("data-spec") || "";
+    feesInput.value = selected.getAttribute("data-fees")
+        ? "₹" + selected.getAttribute("data-fees")
+        : "";
+
+    timingInput.value = from + " to " + to;
+
+    // ✅ SHOW SLOTS IMMEDIATELY
+    generateSlots(from, to);
+
+    // ✅ UPDATE FROM DB
+    if(dateInput.value){
+        fetchSlots(this.value, dateInput.value);
+    }
+});
+
+// 🔥 DATE CHANGE
+dateInput.addEventListener("change", function(){
+    if(doctorSelect.value){
+        fetchSlots(doctorSelect.value, this.value);
+    }
+});
+
+// FORM VALIDATION
+document.querySelector("form").addEventListener("submit", function(e){
+
+    if(!selectedTimeInput.value){
+        alert("Please select a time slot");
+        e.preventDefault();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
